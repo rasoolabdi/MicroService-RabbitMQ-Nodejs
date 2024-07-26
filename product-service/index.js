@@ -1,4 +1,5 @@
 const express = require("express");
+const { productRouter } = require("./handler/product");
 const app = express();
 require("dotenv").config();
 const {PORT} = process.env;
@@ -6,6 +7,7 @@ const {PORT} = process.env;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use("/product" , productRouter);
 
 app.use((req,res,next) => {
     return res.json({error: "NotFound"})

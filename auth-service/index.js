@@ -1,9 +1,13 @@
 const express = require("express");
+require("./config/mongoose.config");
+const { authRouter } = require("./handler/auth");
 const app = express();
 require("dotenv").config();
+// const PORT = process.env.PORT;
+const PORT = 3001;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-const {PORT} = process.env;
+app.use("/auth" , authRouter);
 
 
 app.use((req,res,next) => {

@@ -1,9 +1,11 @@
 const express = require("express");
+const { orderRouter } = require("./handler/order");
 const app = express();
 require("dotenv").config();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 const {PORT} = process.env;
+app.use("/order" , orderRouter);
 
 
 app.use((req,res,next) => {
