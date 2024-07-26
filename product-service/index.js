@@ -3,6 +3,7 @@ const { productRouter } = require("./handler/product");
 const app = express();
 require("dotenv").config();
 const {PORT} = process.env;
+require("./config/mongoose.config");
 
 
 app.use(express.json());
