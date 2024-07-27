@@ -1,10 +1,13 @@
 const express = require("express");
 const { orderRouter } = require("./handler/order");
+const { createOrderWithQueue } = require("./config/rabbitmq");
 const app = express();
+createOrderWithQueue("ORDER");
+require("./config/mongoose.config");
 require("dotenv").config();
+const {PORT} = process.env;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-const {PORT} = process.env;
 app.use("/order" , orderRouter);
 
 

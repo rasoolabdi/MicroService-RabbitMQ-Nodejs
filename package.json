@@ -1,0 +1,22 @@
+{
+  "name": "microservice-rabbitmq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rasoolabdi/MicroService-RabbitMQ-Nodejs.git"
+  },
+  "author": "rasoolabdi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rasoolabdi/MicroService-RabbitMQ-Nodejs/issues"
+  },
+  "homepage": "https://github.com/rasoolabdi/MicroService-RabbitMQ-Nodejs#readme",
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2"
+  }
+}
