@@ -1,24 +1,27 @@
 const amqp = require("amqplib");
 const orderModel = require("../model/order");
 let channel;
-const connectToChannel = async() => {
-    try{
+
+const connectTochannel = async() => {
+    try {
         const connection = await amqp.connect("amqp://localhost:5672");
-        return await connection.createChannel();
-    }
-    catch(error) {
-        console.log("cannot connect to rabbitMQ server");
+        const channel = await connection.createChannel();
+        return  channel;
+    } catch (error) {
+        console.log(("cannot connect to rabbitmq server"));
     }
 }
 
+
 const returnChannel = async() => {
     if(!channel) {
-        channel = await connectToChannel();
+        channel = await connectTochannel();
     }
     return channel;
 }
 
 const createQueue = async(queueName) => {
+    console.log("queueName =>" , queueName);
     const channel = await returnChannel();
     await channel.assertQueue(queueName);
     return channel;
@@ -53,7 +56,7 @@ const createOrderWithQueue = async(queueName) => {
 
 
 module.exports = {
-    connectToChannel, 
+    connectTochannel,
     returnChannel,
     pushToQueue,
     createOrderWithQueue,
